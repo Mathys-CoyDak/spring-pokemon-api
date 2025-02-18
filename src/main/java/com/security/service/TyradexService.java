@@ -48,15 +48,11 @@ public class TyradexService {
         }
     }
     public String reboundRequest(Long id) {
-        // Par exemple, vous pourriez envoyer une requête à un autre service
-        // Imaginons qu'on envoie la requête à l'API Tyradex pour obtenir des détails
-        String url = "https://tyradex.vercel.app/api/v1/pokemon/" + id; // URL d'exemple
-        String response = restTemplate.getForObject(url, String.class);
-
-        // Ici, on peut traiter ou manipuler la réponse de l'API avant de la retourner
-        // Si vous avez des règles de transformation ou de filtrage, vous pouvez les ajouter ici.
-
-        // Retourner simplement la réponse de l'API comme un exemple
+        String response = restTemplate.getForObject(BASE_URL + id, String.class);
+        return "Rebond de la requête vers Tyradex : " + response;
+    }
+    public String reboundRequest(String name){
+        String response = restTemplate.getForObject(BASE_URL + name, String.class);
         return "Rebond de la requête vers Tyradex : " + response;
     }
 }

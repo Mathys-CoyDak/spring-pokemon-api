@@ -24,13 +24,17 @@ public class PokemonController {
     }
 
     // 1. Rebondir une requête (route accessible par ROLE_BOUNCER)
-    @GetMapping("/rebound/{id}")
+    @GetMapping("/rebound/id/{id}")
     @PreAuthorize("hasRole('ROLE_BOUNCER')")
     public String reboundRequest(@PathVariable Long id) {
-        // Code pour rebondir la requête
         return tyradexService.reboundRequest(id);
     }
-
+    // Rebonds une requête avec un nom de Pokémon
+    @GetMapping("/rebound/name/{name}")
+    @PreAuthorize("hasRole('ROLE_BOUNCER')")
+    public String reboundPokemon(@PathVariable String name) {
+        return tyradexService.reboundRequest(name);
+    }
     // 2. Lancer le scrapping (route accessible par ROLE_SCRAPPER)
     @PostMapping("/scrap/{name}")
     @PreAuthorize("hasRole('ROLE_SCRAPPER')")
