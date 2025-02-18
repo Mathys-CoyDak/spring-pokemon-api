@@ -6,14 +6,24 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "pokemons")
-@Getter @Setter
+@Getter
+@Setter
 public class Pokemon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private int pokedexId;
+    private int generation;
+    private String category;
+    private String nameFr;
+    private String spriteUrl;
     private String type;
+
+    private int hp;
     private int attack;
     private int defense;
+    private int specialAttack;
+    private int specialDefense;
+    private int speed;
 }

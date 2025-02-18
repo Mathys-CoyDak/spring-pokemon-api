@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -68,17 +69,19 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Désactivation de CSRF, nécésaire pour JWT
+                .csrf(AbstractHttpConfigurer::disable) // Désactivation de CSRF, nécésaire pour JWT
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Application de la config CORS
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Accès admin
                         .requestMatchers("/user/**").hasRole("USER") // Accès étudiant
                         .requestMatchers("/tester/**").hasRole("TESTER") // Accès enseignant
+                        .requestMatchers("/api/pokemon/rebound/**").hasRole("BOUNCER") // Rebondir une requête
+                        .requestMatchers("/api/pokemon/scrap/**").hasRole("SCRAPPER") // Scrapper un Pokémon
+                        .requestMatchers("/api/pokemon/**").hasRole("CRUDER") // CRUD pour Pokémon
                         // Accès public a certaines routes, notamment la page d'accueil, l'inscription et le login
-                        .requestMatchers("/", "/index", "/test", "/test/*", "/api/users/register", "/api/login","/api/pokemon/*").permitAll()
+                        .requestMatchers("/", "/index", "/test", "/test/*", "/api/users/register", "/api/login").permitAll()
                         .anyRequest().authenticated() // Toutes les autres requêtes nécessitent une authentification
-                )
-                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class); // Ajout du filtre JWT, permettant de vérifier le token et le rôle de l'utilisateur
+                ).addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class); // Ajout du filtre JWT, permettant de vérifier le token et le rôle de l'utilisateur
 
         return http.build();
     }
