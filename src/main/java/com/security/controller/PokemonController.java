@@ -23,7 +23,7 @@ public class PokemonController {
         return tyradexService.scrapPokemon(name);  // Enregistre et renvoie le Pokémon
     }
 
-    // 1. Rebondir une requête (route accessible par ROLE_BOUNCER)
+    // Rebondir une requête avec l'id du pokedex (route accessible par ROLE_BOUNCER)
     @GetMapping("/rebound/id/{id}")
     @PreAuthorize("hasRole('ROLE_BOUNCER')")
     public String reboundRequest(@PathVariable Long id) {
@@ -36,10 +36,16 @@ public class PokemonController {
         return tyradexService.reboundRequest(name);
     }
     // 2. Lancer le scrapping (route accessible par ROLE_SCRAPPER)
-    @PostMapping("/scrap/{name}")
+    @PostMapping("/scrap/name/{name}")
     @PreAuthorize("hasRole('ROLE_SCRAPPER')")
     public Pokemon scrapPokemon(@PathVariable String name) {
         return tyradexService.scrapPokemon(name);
+    }
+    // 2. Lancer le scrapping (route accessible par ROLE_SCRAPPER)
+    @PostMapping("/scrap/id/{id}")
+    @PreAuthorize("hasRole('ROLE_SCRAPPER')")
+    public Pokemon scrapPokemon(@PathVariable Long id) {
+        return tyradexService.scrapPokemon(id);
     }
 
     // 3. Utiliser le CRUD (routes accessibles par ROLE_CRUDER)
