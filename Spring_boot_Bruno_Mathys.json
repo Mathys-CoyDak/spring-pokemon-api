@@ -364,13 +364,6 @@
           "enabled": true,
           "secret": false,
           "type": "text"
-        },
-        {
-          "name": "userToken",
-          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjcnVkZXIxIiwiaWF0IjoxNzQxNjA1NDQ1LCJleHAiOjE3NDE2MDkwNDUsInJvbGVzIjpbIlJPTEVfQ1JVREVSIl19.qWhJ_TQfLFeIcJdh_Ud1pZHCG6Z8rBzcE2W4iWcVxgQsfS8Lq-aNGctNK5I-2oiPmyGBQ3gs2fJHy5dmDUjSjw",
-          "enabled": true,
-          "secret": false,
-          "type": "text"
         }
       ],
       "name": "env"
