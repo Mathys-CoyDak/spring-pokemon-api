@@ -4,6 +4,7 @@ import com.security.entity.Pokemon;
 import com.security.repository.PokemonRepository;
 import com.security.service.TyradexService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,20 +67,22 @@ public class PokemonController {
     // Supprimer un Pokémon (CRUD)
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_CRUDER')")
-    public void deletePokemon(@PathVariable Long id) {
+    public ResponseEntity<String> deletePokemon(@PathVariable Long id) {
         pokemonRepository.deleteById(id);
+        return ResponseEntity.ok("Le Pokémon a été supprimer avec succès.");
     }
 
     // Ajouter un Pokémon dans la base de données
     @PostMapping
     @PreAuthorize("hasRole('ROLE_CRUDER')")
-    public Pokemon createPokemon(@RequestBody Pokemon pokemon) {
-        return pokemonRepository.save(pokemon);
+    public ResponseEntity<String> createPokemon(@RequestBody Pokemon pokemon) {
+        pokemonRepository.save(pokemon);
+        return ResponseEntity.ok("Le Pokémon a été ajouter avec succès.");
     }
     // Modifier un Pokémon existant
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_CRUDER')")
-    public Pokemon updatePokemon(@PathVariable Long id, @RequestBody Pokemon pokemonDetails) {
+    public ResponseEntity<String> updatePokemon(@PathVariable Long id, @RequestBody Pokemon pokemonDetails) {
         return pokemonRepository.findById(id).map(pokemon -> {
             pokemon.setPokedexId(pokemonDetails.getPokedexId());
             pokemon.setGeneration(pokemonDetails.getGeneration());
@@ -93,7 +96,11 @@ public class PokemonController {
             pokemon.setSpecialAttack(pokemonDetails.getSpecialAttack());
             pokemon.setSpecialDefense(pokemonDetails.getSpecialDefense());
             pokemon.setSpeed(pokemonDetails.getSpeed());
-            return pokemonRepository.save(pokemon);
+
+            pokemonRepository.save(pokemon); // Sauvegarder la mise à jour
+
+            // Retourner une réponse avec un message de confirmation
+            return ResponseEntity.ok("Le Pokémon avec l'ID " + id + " a été modifié avec succès.");
         }).orElseThrow(() -> new RuntimeException("Pokemon non trouvé"));
     }
 
