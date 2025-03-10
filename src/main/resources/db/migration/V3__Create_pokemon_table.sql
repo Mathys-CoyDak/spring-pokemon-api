@@ -7,7 +7,7 @@ CREATE TABLE pokemons (
                           sprite_url VARCHAR(255),
                           type VARCHAR(255),
                           hp INT NOT NULL,
-                          attack INT NOT NULL,
+                          attack INT NobsOT NULL,
                           defense INT NOT NULL,
                           special_attack INT NOT NULL,
                           special_defense INT NOT NULL,
