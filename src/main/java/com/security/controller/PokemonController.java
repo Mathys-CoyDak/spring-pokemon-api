@@ -69,4 +69,32 @@ public class PokemonController {
     public void deletePokemon(@PathVariable Long id) {
         pokemonRepository.deleteById(id);
     }
+
+    // Ajouter un Pokémon dans la base de données
+    @PostMapping
+    @PreAuthorize("hasRole('ROLE_CRUDER')")
+    public Pokemon createPokemon(@RequestBody Pokemon pokemon) {
+        return pokemonRepository.save(pokemon);
+    }
+    // Modifier un Pokémon existant
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_CRUDER')")
+    public Pokemon updatePokemon(@PathVariable Long id, @RequestBody Pokemon pokemonDetails) {
+        return pokemonRepository.findById(id).map(pokemon -> {
+            pokemon.setPokedexId(pokemonDetails.getPokedexId());
+            pokemon.setGeneration(pokemonDetails.getGeneration());
+            pokemon.setCategory(pokemonDetails.getCategory());
+            pokemon.setNameFr(pokemonDetails.getNameFr());
+            pokemon.setSpriteUrl(pokemonDetails.getSpriteUrl());
+            pokemon.setType(pokemonDetails.getType());
+            pokemon.setHp(pokemonDetails.getHp());
+            pokemon.setAttack(pokemonDetails.getAttack());
+            pokemon.setDefense(pokemonDetails.getDefense());
+            pokemon.setSpecialAttack(pokemonDetails.getSpecialAttack());
+            pokemon.setSpecialDefense(pokemonDetails.getSpecialDefense());
+            pokemon.setSpeed(pokemonDetails.getSpeed());
+            return pokemonRepository.save(pokemon);
+        }).orElseThrow(() -> new RuntimeException("Pokemon non trouvé"));
+    }
+
 }
