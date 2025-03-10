@@ -1,0 +1,390 @@
+{
+  "name": "Project_spring_boot_Mathys",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "Connections",
+      "items": [
+        {
+          "type": "http",
+          "name": "Connection as bouncer",
+          "seq": 2,
+          "request": {
+            "url": "{{connectionPath}}/api/login",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n    \"username\": \"bouncer1\",\n    \"password\" : \"password\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "var jsonData = res.getBody();\nbru.setEnvVar(\"userToken\", jsonData.token);",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Connection as cruder",
+          "seq": 4,
+          "request": {
+            "url": "{{connectionPath}}/api/login",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n    \"username\": \"cruder1\",\n    \"password\" : \"password\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "var jsonData = res.getBody();\nbru.setEnvVar(\"userToken\", jsonData.token);",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Connection as scraper",
+          "seq": 3,
+          "request": {
+            "url": "{{connectionPath}}/api/login",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n    \"username\": \"scraper1\",\n    \"password\" : \"password\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "var jsonData = res.getBody();\nbru.setEnvVar(\"userToken\", jsonData.token);",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Requete pokemon",
+      "items": [
+        {
+          "type": "http",
+          "name": "(Cruder)Liste Pokemon bd",
+          "seq": 5,
+          "request": {
+            "url": "{{connectionPath}}/api/pokemon",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "(Cruder)Pokemon Id bd",
+          "seq": 6,
+          "request": {
+            "url": "{{connectionPath}}/api/pokemon/2",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "(crud)Supprimer Pokemon Id bd",
+          "seq": 7,
+          "request": {
+            "url": "{{connectionPath}}/api/pokemon/2",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "(bouncer)Recherche pokemon par id",
+          "seq": 1,
+          "request": {
+            "url": "{{connectionPath}}/api/pokemon/rebound/id/100",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "(bouncer)Recherche pokemon par nom",
+          "seq": 2,
+          "request": {
+            "url": "{{connectionPath}}/api/pokemon/rebound/name/dracaufeu",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "(Scraper)Recherche save pokemon par id",
+          "seq": 3,
+          "request": {
+            "url": "{{connectionPath}}/api/pokemon/scrap/id/104",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "(Scraper)Recherche save pokemon par nom",
+          "seq": 4,
+          "request": {
+            "url": "{{connectionPath}}/api/pokemon/scrap/name/carapuce",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "(crud)Modifier Pokemon Id bd",
+          "seq": 8,
+          "request": {
+            "url": "{{connectionPath}}/api/pokemon/2",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"pokedexId\": 25,\n  \"generation\": 1,\n  \"category\": \"Souris\",\n  \"nameFr\": \"Pikachu\",\n  \"spriteUrl\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png\",\n  \"type\": \"Électrique\",\n  \"hp\": 35,\n  \"attack\": 55,\n  \"defense\": 40,\n  \"specialAttack\": 50,\n  \"specialDefense\": 50,\n  \"speed\": 90\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "(crud)Ajouter Pokemon Id bd",
+          "seq": 9,
+          "request": {
+            "url": "{{connectionPath}}/api/pokemon",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"pokedexId\": 450,\n  \"generation\": 4,\n  \"category\": \"Pokémon Poids Lourd\",\n  \"nameFr\": \"Hippodocus\",\n  \"spriteUrl\": \"https://raw.githubusercontent.com/Yarkis01/TyraDex/images/sprites/450/regular.png\",\n  \"type\": \"Sol\",\n  \"hp\": 108,\n  \"attack\": 112,\n  \"defense\": 118,\n  \"specialAttack\": 68,\n  \"specialDefense\": 72,\n  \"speed\": 47\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "activeEnvironmentUid": "9PT4ZrTvk2l2jeTUcA0oI",
+  "environments": [
+    {
+      "variables": [
+        {
+          "name": "connectionPath",
+          "value": "http://localhost:8085",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "userToken",
+          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjcnVkZXIxIiwiaWF0IjoxNzQxNjA1NDQ1LCJleHAiOjE3NDE2MDkwNDUsInJvbGVzIjpbIlJPTEVfQ1JVREVSIl19.qWhJ_TQfLFeIcJdh_Ud1pZHCG6Z8rBzcE2W4iWcVxgQsfS8Lq-aNGctNK5I-2oiPmyGBQ3gs2fJHy5dmDUjSjw",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "env"
+    }
+  ],
+  "brunoConfig": {
+    "version": "1",
+    "name": "Project_spring_boot_Mathys",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0028781890869140625,
+    "filesCount": 11
+  }
+}

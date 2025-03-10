@@ -1,0 +1,525 @@
+{
+  "info": {
+    "name": "Project_spring_boot_Mathys",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Connections",
+      "item": [
+        {
+          "name": "Connection as bouncer",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = res.getBody();",
+                  "bru.setEnvVar(\"userToken\", jsonData.token);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/login",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"bouncer1\",\n    \"password\" : \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Connection as cruder",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = res.getBody();",
+                  "bru.setEnvVar(\"userToken\", jsonData.token);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/login",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"cruder1\",\n    \"password\" : \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Connection as scraper",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = res.getBody();",
+                  "bru.setEnvVar(\"userToken\", jsonData.token);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/login",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"scraper1\",\n    \"password\" : \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Requete pokemon",
+      "item": [
+        {
+          "name": "(Cruder)Liste Pokemon bd",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{userToken}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/pokemon",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "pokemon"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "(Cruder)Pokemon Id bd",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{userToken}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/pokemon/2",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "pokemon",
+                "2"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "(crud)Supprimer Pokemon Id bd",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{userToken}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/pokemon/2",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "pokemon",
+                "2"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "(bouncer)Recherche pokemon par id",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{userToken}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/pokemon/rebound/id/100",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "pokemon",
+                "rebound",
+                "id",
+                "100"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "(bouncer)Recherche pokemon par nom",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{userToken}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/pokemon/rebound/name/dracaufeu",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "pokemon",
+                "rebound",
+                "name",
+                "dracaufeu"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "(Scraper)Recherche save pokemon par id",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{userToken}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/pokemon/scrap/id/104",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "pokemon",
+                "scrap",
+                "id",
+                "104"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "(Scraper)Recherche save pokemon par nom",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{userToken}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/pokemon/scrap/name/carapuce",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "pokemon",
+                "scrap",
+                "name",
+                "carapuce"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "(crud)Modifier Pokemon Id bd",
+          "event": [],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{userToken}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/pokemon/2",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "pokemon",
+                "2"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pokedexId\": 25,\n  \"generation\": 1,\n  \"category\": \"Souris\",\n  \"nameFr\": \"Pikachu\",\n  \"spriteUrl\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png\",\n  \"type\": \"Électrique\",\n  \"hp\": 35,\n  \"attack\": 55,\n  \"defense\": 40,\n  \"specialAttack\": 50,\n  \"specialDefense\": 50,\n  \"speed\": 90\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "(crud)Ajouter Pokemon Id bd",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{userToken}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{connectionPath}}/api/pokemon",
+              "protocol": "",
+              "host": [
+                "{{connectionPath}}"
+              ],
+              "path": [
+                "api",
+                "pokemon"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pokedexId\": 450,\n  \"generation\": 4,\n  \"category\": \"Pokémon Poids Lourd\",\n  \"nameFr\": \"Hippodocus\",\n  \"spriteUrl\": \"https://raw.githubusercontent.com/Yarkis01/TyraDex/images/sprites/450/regular.png\",\n  \"type\": \"Sol\",\n  \"hp\": 108,\n  \"attack\": 112,\n  \"defense\": 118,\n  \"specialAttack\": 68,\n  \"specialDefense\": 72,\n  \"speed\": 47\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "bruno",
+      "event": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "connectionPath",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "userToken",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
