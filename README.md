@@ -40,7 +40,7 @@ spring.datasource.password=[your_password]
 ```
 jwt.secret=[clé à changer]
 ```
-5️⃣ Démarrer l'application
+# 4️⃣ Démarrer l'application
 
 Démarrer WebsiteApplication par votre IDE ou si vous avez maven d'installer:
 ```bash
