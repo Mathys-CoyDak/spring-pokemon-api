@@ -27,8 +27,8 @@ Créez une base de données MySQL :
 CREATE DATABASE [name_database];
 ```
 
- Vérifiez que MySQL tourne bien sur localhost:3306 et mettez à jour src/main/resources/application.properties :
-
+Vérifiez que MySQL tourne bien sur localhost:3306 et mettez à jour src/main/resources/application.properties :
+Changer les champs selon vos informations de votre database
 ## Database
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/[name_database]
@@ -47,3 +47,9 @@ Démarrer WebsiteApplication par votre IDE ou si vous avez maven d'installer:
 mvn spring-boot:run
 ```
 L'API est accessible sur http://localhost:8085/api/pokemon.
+
+## 5️⃣ Tester les différentes routes API
+
+Importez le fichier Spring_boot_Bruno_Mathys.json dans Bruno et testez les différentes routes.
+
+Si vous souhaitez tester des routes accessibles uniquement à certains rôles, vous devez d'abord vous connecter avec un utilisateur disposant du rôle approprié.
