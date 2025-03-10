@@ -10,17 +10,17 @@
 
 ## Installation
 
-### 1️⃣ Prérequis
+## 1️⃣ Prérequis
 Assurez-vous d'avoir installé :
 - [MySQL](https://www.mysql.com/)
 - [Postman](https://www.postman.com/) ou [Bruno](https://www.usebruno.com)
 
-### 2️⃣ Cloner le projet
+## 2️⃣ Cloner le projet
 ```bash
 git clone https://github.com/Mathys-CoyDak/spring-pokemon-api.git
 cd spring-pokemon-api
 ```
-### 3️⃣ Configurer la base de données
+## 3️⃣ Configurer la base de données
 Créez une base de données MySQL :
 
 ```sql
@@ -36,11 +36,11 @@ spring.datasource.username=[your_username]
 spring.datasource.password=[your_password]
 ```
 
-# Security
+## Security
 ```
 jwt.secret=[clé à changer]
 ```
-# 4️⃣ Démarrer l'application
+## 4️⃣ Démarrer l'application
 
 Démarrer WebsiteApplication par votre IDE ou si vous avez maven d'installer:
 ```bash
