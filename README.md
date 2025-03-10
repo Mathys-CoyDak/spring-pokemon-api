@@ -34,8 +34,11 @@ CREATE DATABASE [name_database];
 spring.datasource.url=jdbc:mysql://localhost:3306/[name_database]
 spring.datasource.username=[your_username]
 spring.datasource.password=[your_password]
-spring.jpa.hibernate.ddl-auto=none
-spring.flyway.enabled=true
+```
+
+# Security
+```
+jwt.secret=[clé à changer]
 ```
 5️⃣ Démarrer l'application
 
