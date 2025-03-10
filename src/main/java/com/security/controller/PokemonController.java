@@ -18,13 +18,8 @@ public class PokemonController {
     private final TyradexService tyradexService;
     private final PokemonRepository pokemonRepository;
 
-    // Ajouter un Pokémon depuis Tyradex
-    @PostMapping("/name/{name}")
-    public Pokemon addPokemon(@PathVariable String name) {
-        return tyradexService.scrapPokemon(name);  // Enregistre et renvoie le Pokémon
-    }
-
-    // Rebondir une requête avec l'id du pokedex (route accessible par ROLE_BOUNCER)
+    // 1.Reboudir (routes accessibles par ROLE_BOUNCER)
+    // Rebondir une requête avec l'id du pokedex
     @GetMapping("/rebound/id/{id}")
     @PreAuthorize("hasRole('ROLE_BOUNCER')")
     public String reboundRequest(@PathVariable Long id) {
@@ -36,13 +31,14 @@ public class PokemonController {
     public String reboundPokemon(@PathVariable String name) {
         return tyradexService.reboundRequest(name);
     }
-    // 2. Lancer le scrapping (route accessible par ROLE_SCRAPPER)
+    // 2.Scrapping (routes accessibles par ROLE_SCRAPER)
+    // Lancer le scrapping avec le nom du pokedex
     @PostMapping("/scrap/name/{name}")
     @PreAuthorize("hasRole('ROLE_SCRAPPER')")
     public Pokemon scrapPokemon(@PathVariable String name) {
         return tyradexService.scrapPokemon(name);
     }
-    // 2. Lancer le scrapping (route accessible par ROLE_SCRAPPER)
+    // Lancer le scrapping avec l'id du pokemon
     @PostMapping("/scrap/id/{id}")
     @PreAuthorize("hasRole('ROLE_SCRAPPER')")
     public Pokemon scrapPokemon(@PathVariable Long id) {
